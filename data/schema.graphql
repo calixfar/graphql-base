@@ -1,0 +1,57 @@
+type Person {
+    id : ID
+    document : String
+    name : String
+    surname : String
+    birthDate: String
+    gender : gender
+    email : String
+    phone : String
+    address : String
+    state : Boolean
+    typeUser : typeUser
+}
+
+enum typeUser {
+    ADMIN
+    USER
+}
+
+enum gender {
+    MASCULINE
+    FEMININE
+}
+
+input inputPerson {
+     id : ID
+    document : String!
+    name : String!
+    surname : String!
+    birthDate: String!
+    gender : gender!
+    email : String!
+    address : String!
+    phone : String!
+    state : Boolean!
+    typeUser : typeUser!
+}
+
+input inputCustomPerson {
+    gender : gender
+}
+
+input inputDefusePerson {
+    id : ID
+    state : Boolean
+}
+type Mutation {
+    insertPerson(input : inputPerson!) : Person
+    updatePerson(input : inputPerson!) : Person
+    defusePerson(input : inputDefusePerson!) : Person
+
+}
+
+type Query {
+    getCustomPersons(input : inputCustomPerson) : [Person]
+    totalPersons : String
+}
